@@ -1,0 +1,69 @@
+// some kind of function to create employee html cards
+
+function generateHTML(data) {
+    // function stuff
+    return `<!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Team</title>
+    
+        <style>
+            header {
+                display: flex;
+                justify-content: center;
+                background-color: blue;
+                color: antiquewhite;
+            }
+    
+            .card {
+                border: 1px solid black;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                width: 250px;
+                height: 300px;
+                align-content: center;
+                justify-content: center;
+                box-shadow: 5px 5px;
+            }
+    
+            .card .title {
+                display: flex;
+                flex-direction: column;
+                background-color: blueviolet;
+                width: 100%;
+                justify-content: center;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <header>
+            <h2>My Team</h2>
+        </header>
+    
+        <div class="container">
+            <main class="card">
+                <div class="title">
+                    <h3>Name</h3>
+                    <h4>position</h4>
+                </div>
+                <p>ID: 1</p>
+                <a>Email:</a>
+                <a>GitHub</a>
+            </main>
+        </div>
+    
+    
+    
+    
+    </body>
+    
+    </html>`
+}
+
+module.exports = generateHTML

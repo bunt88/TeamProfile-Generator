@@ -1,7 +1,9 @@
 // Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-
+const generateHTML = require("./src/generateHTML")
+const teamArray = [];
+const Engineer = require('./lib/Engineer')
 
 const menu = () => {
     return inquirer.prompt([
@@ -11,7 +13,15 @@ const menu = () => {
             choices: ['Manager', 'Engineer', 'Intern'],
             message: 'Would you like to add a new Team Member?'
         },
-    ]);
+    ]).then(data => {
+        if (data.teamMember === 'Manager') {
+            manager();
+        } else if (data.teamMember === 'Engineer') {
+            engineer();
+        } else {
+            intern();
+        }
+    })
 };
 
 // Managers questions for user input
@@ -36,8 +46,8 @@ const manager = () => {
             type: 'input',
             name: 'github',
             message: 'Enter Github Username'
-        }
-    ]);
+        },
+    ]).then
 };
 
 // Engineers questions for user input
@@ -63,7 +73,10 @@ const engineer = () => {
             name: 'github',
             message: 'Enter Github Username'
         }
-    ]);
+    ]).then(data => {
+        const engineer = new Engineer(data.name, data.id, data.email, data.github)
+        teamArray.push(engineer);
+    })
 };
 
 // Intern questions for user input
@@ -96,9 +109,11 @@ const intern = () => {
 //function to write HTML file
 
 function writeToFile(data) {
-    return ``
-}
+    console.log(generateHTML())
+};
 
+
+// generateHTML(teamArray)
 //create function to initialize app
 function init() {
     menu()
