@@ -1,9 +1,11 @@
 // Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateHTML = require("./src/generateHTML")
+const generateHTML = require("./src/generateHTML");
 const teamArray = [];
-const Engineer = require('./lib/Engineer')
+const Engineer = require('./lib/Engineer');
+const Manager = require('./lib/Manager');
+const Intern = require('./lib/Intern');
 
 const menu = () => {
     return inquirer.prompt([
