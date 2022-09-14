@@ -21,11 +21,10 @@ const menu = () => {
         } else if (data.teamMember === 'Engineer') {
             engineer();
         } else {
-            intern();
+             intern();
         }
-    })
-};
-
+    });
+}
 // Managers questions for user input
 const manager = () => {
     return inquirer.prompt([
@@ -49,7 +48,12 @@ const manager = () => {
             name: 'github',
             message: 'Enter Github Username'
         },
-    ]).then
+    ]).then(data => {
+        const manager = new Manager(data.name, data.id, data.email, data.github)
+        console.log(manager);
+        teamArray.push(manager);
+        console.log(teamArray);
+    })    
 };
 
 // Engineers questions for user input
@@ -77,7 +81,9 @@ const engineer = () => {
         }
     ]).then(data => {
         const engineer = new Engineer(data.name, data.id, data.email, data.github)
+        console.log(engineer);
         teamArray.push(engineer);
+        console.log(teamArray);
     })
 };
 
@@ -104,22 +110,33 @@ const intern = () => {
             name: 'school',
             message: 'Enter School Name'
         }
-    ]);
+    ]).then(data => {
+        const intern = new Intern(data.name, data.id, data.email, data.github)
+        console.log(intern);
+        teamArray.push(intern);
+        console.log(teamArray);
+    })
 };
 
 
 //function to write HTML file
+//const writeToFile = (fileName, data) => {
+   // if (!fs.existsSync("output")) {
+      //  fs.mkdirSync("output")
+    //}
 
-function writeToFile(data) {
-    console.log(generateHTML())
-};
+    //fs.writeFileSync(`./output/${generateHTML}`, data, (err) => 
+  //  err ? console.log(err) : console.log("Commit Logged"))
+//};
 
+//const  newHTML= generateHTML();
+
+// writeToFile("index.html", newHTML);
 
 // generateHTML(teamArray)
 //create function to initialize app
 function init() {
-    menu()
-
+    menu()   
 };
 
 //Function call to initialize app
